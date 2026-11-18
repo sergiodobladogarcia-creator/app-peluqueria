@@ -1,0 +1,9 @@
+{
+  "name": "Barber Studio",
+  "short_name": "Barber Studio",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0c0d10",
+  "theme_color": "#101114",
+  "icons": [{ "src": "img/icono.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
