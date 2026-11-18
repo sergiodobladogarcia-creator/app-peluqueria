@@ -1,21 +1,27 @@
-# App de peluquería (demo)
+# App de peluquería
 
-Web app para móvil: reservas, servicios, trabajos (fotos y Reels) y panel del peluquero.
-Sin instalación: HTML, CSS y JS. Las reservas de la demo se guardan en el propio móvil.
+Web app para móvil con reservas reales, y panel del peluquero para gestionarlo todo.
 
-## Personalizarla para un peluquero
-Todo se cambia en `js/config.js`:
-- `nombre`, `lema`, `ciudad`, `instagram`, `whatsapp`, `direccion`, valoración.
-- `horario`, `equipo` y `servicios` (precio y duración).
-- `trabajos`: copia sus fotos o vídeos a `img/` y pon la ruta en `src`,
-  por ejemplo `src: "img/fade1.jpg"` o `src: "img/reel1.mp4"` (con `tipo: "video"`).
-- `portada`: una foto o vídeo para la cabecera (`"img/portada.mp4"`).
-- Cambia también `name` en `manifest.webmanifest` y el `<title>` de `index.html`.
+- **App de clientes:** `index.html` → reservar (servicio, profesional, día, hora), carta de precios,
+  trabajos (fotos y vídeos), mis citas (cambiar / cancelar) y tarjeta de fidelidad.
+- **Panel del peluquero:** `panel.html` → agenda por profesional, nuevas citas, estados
+  (hecha / no vino / cancelada), bloquear huecos y vacaciones, clientes, servicios y precios,
+  equipo y horario, subir fotos y vídeos, datos del negocio.
+
+## Base de datos
+Supabase, proyecto `app-peluqueria` (id `nlqtgnzwpjotdnwwlxtm`, plan gratuito).
+- Los clientes reservan sin cuenta a través de la función `reservar`, que comprueba horario,
+  huecos libres y límites. No pueden leer las citas de otros.
+- La **primera cuenta** que se crea en `panel.html` queda como dueño (tabla `admins`).
+- Las fotos y vídeos se guardan en el almacenamiento `trabajos`.
+
+## Cómo le llegan las reservas
+1. Al momento en la agenda del panel, con sonido y aviso del navegador si el panel está abierto.
+2. El cliente, al reservar, tiene un botón para avisar por WhatsApp a la peluquería.
+3. Desde el panel, el peluquero confirma, recuerda o pide reseña por WhatsApp con un toque
+   (mensaje ya escrito).
+
+Siguiente paso posible: avisos automáticos por WhatsApp o correo con n8n y la API de WhatsApp Business.
 
 ## Verla en el ordenador
-Desde la carpeta del Escritorio: `python -m http.server 5174 --directory app-peluqueria`
-y abre http://localhost:5174
-
-## Panel del peluquero
-Mis citas → «¿Eres el peluquero? Abre el panel». Agenda por día y profesional,
-bloquear huecos y reiniciar los datos de ejemplo.
+Desde el Escritorio: `python -m http.server 5174 --directory app-peluqueria` y abre http://localhost:5174

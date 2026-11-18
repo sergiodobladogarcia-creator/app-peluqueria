@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101114">
+  <meta name="robots" content="noindex">
+  <title>Panel · Peluquería</title>
+  <link rel="icon" href="img/icono.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="css/panel.css">
+</head>
+<body>
+  <div id="login" class="login" hidden>
+    <form class="login-card" id="loginForm">
+      <span class="logo">✂</span>
+      <h1>Panel del peluquero</h1>
+      <p class="sub" id="loginSub">Entra con tu correo para ver tu agenda y gestionar la peluquería.</p>
+      <label class="field"><span>Correo</span><input id="lgEmail" type="email" autocomplete="username" required></label>
+      <label class="field"><span>Contraseña</span><input id="lgPass" type="password" autocomplete="current-password" minlength="6" required></label>
+      <div class="err" id="lgErr"></div>
+      <button class="btn" id="lgBtn" type="submit">Entrar</button>
+      <button class="link" id="lgToggle" type="button">¿Primera vez? Crear la cuenta del dueño</button>
+      <a class="link" href="./">← Volver a la app de clientes</a>
+    </form>
+  </div>
+
+  <div id="panel" class="panel" hidden>
+    <aside class="side">
+      <div class="brand"><span class="logo" id="pLogo">B</span><div><b id="pName">Peluquería</b><small>Panel del peluquero</small></div></div>
+      <nav id="nav"></nav>
+      <div class="side-foot">
+        <button class="btn ghost small" id="notifBtn">🔔 Activar avisos</button>
+        <a class="btn ghost small" href="./" target="_blank" rel="noopener">Ver app de clientes</a>
+        <button class="link" id="logout">Cerrar sesión</button>
+      </div>
+    </aside>
+    <main class="main" id="main"></main>
+  </div>
+
+  <div class="modal-bg" id="modalBg" hidden></div>
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/panel.js"></script>
+</body>
+</html>
